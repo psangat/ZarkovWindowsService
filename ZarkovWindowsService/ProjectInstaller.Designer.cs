@@ -36,10 +36,12 @@
             this.zarkovserviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.zarkovserviceProcessInstaller.Password = null;
             this.zarkovserviceProcessInstaller.Username = null;
+            this.zarkovserviceProcessInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.zarkovserviceProcessInstaller_AfterInstall);
             // 
             // zarkovserviceInstaller
             // 
             this.zarkovserviceInstaller.ServiceName = "Zarkov Windows Service";
+            this.zarkovserviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 

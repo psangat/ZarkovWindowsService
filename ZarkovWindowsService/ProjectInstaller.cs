@@ -15,5 +15,10 @@ namespace ZarkovWindowsService
         {
             InitializeComponent();
         }
+
+        private void zarkovserviceProcessInstaller_AfterInstall(object sender, InstallEventArgs e)
+        {
+
+        }
     }
 }
