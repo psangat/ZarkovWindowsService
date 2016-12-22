@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace ZarkovWindowsService
 {
@@ -21,7 +18,7 @@ namespace ZarkovWindowsService
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -38,7 +35,7 @@ namespace ZarkovWindowsService
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -57,6 +54,32 @@ namespace ZarkovWindowsService
             {
 
                 throw;
+            }
+        }
+
+        public static void sendMail(string mailTo, string mailFrom, string subject, string body)
+        {
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+
+                String[] mailTos = mailTo.Split(';');
+
+                foreach (var _mailTo in mailTos)
+                {
+                    mailMessage.To.Add(_mailTo);
+                }
+
+                mailMessage.From = new MailAddress(mailFrom);
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                mailMessage.Priority = MailPriority.High;
+                SmtpClient smtpClient = new SmtpClient(Constants.SMTPCLIENT, 25);
+                smtpClient.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                writeLog(Constants.SCHEDULERLOGFILE, ex.ToString());
             }
         }
     }

@@ -40,7 +40,7 @@
             // 
             // zarkovserviceInstaller
             // 
-            this.zarkovserviceInstaller.ServiceName = "Zarkov Windows Service";
+            this.zarkovserviceInstaller.ServiceName = "Zarkov Service DB Schema"; 
             this.zarkovserviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
